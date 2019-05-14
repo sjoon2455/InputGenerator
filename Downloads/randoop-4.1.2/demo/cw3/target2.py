@@ -66,8 +66,9 @@ class ChangeIf(TreeWalk):
             self.walk(child)
             print(self.cur_node)
             for a in self.cur_node:
-                print(a)
-                if hasattr(self, __name__):
+                #print(a)
+                #a.__name__ = None
+                if isinstance(a, ast.If):
                     print("a")
         '''
             print(self.__name__)
@@ -78,12 +79,13 @@ class ChangeIf(TreeWalk):
         #self.__name__ = None
         return True
     
-    
-    def pre_If(self):
+    '''
+    def pre_IfExp(self):
         self.__name__ = None #if 아래에 compare 있다
+        print(hasattr(self, __name__))
         #print(self.__name__)
         #return True
-
+'''
 
 
 
