@@ -1,15 +1,15 @@
 #traceHelper.py
 
 class Helper:
-    def equals(id, a, b):
+    def equals(self, id, a, b):
         return a==b
-    def notEquals(id, a, b):
+    def notEquals(self, id, a, b):
         return a!=b
-    def lessThanOrEquals(id, a, b):
+    def lessThanOrEquals(self, id, a, b):
         return a <= b
-    def lessThan(id, a, b):
+    def lessThan(self, id, a, b):
         return a<b
-    def greaterThanOrEquals(id, a, b):
+    def greaterThanOrEquals(self, id, a, b):
         return b<=a
-    def greaterThan(id, a, b):
+    def greaterThan(self, id, a, b):
         return b<a

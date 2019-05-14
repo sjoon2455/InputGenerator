@@ -1,20 +1,20 @@
 #trace.py
 import ast
-from traceHelper import *
+#from traceHelper import Helper
 
-class Trace(Helper):
+class Trace:
+    #get id 가 있어야하긴 함
     
-
     def whichTracetoUse(self, op, a, b):
         if isinstance(op, ast.Eq):
-            return equals(id, a, b)
+            return "helper.equals({}, {}, {})".format(op, a, b)
         if isinstance(op, ast.NotEq):
-            return notEquals(id, a, b)
+            return "helper.notEquals({}, {}, {})".format(op, a, b)
         if isinstance(op, ast.LtE):
-            return lessThanOrEquals(id, a, b)
+            return "helper.lessThanOrEquals({}, {}, {})".format(op, a, b)
         if isinstance(op, ast.Lt):
-            return lessThan(id, a, b)
+            return "helper.lessThan({}, {}, {})".format(op, a, b)
         if isinstance(op, ast.GtE):
-            return greaterThanOrEquals(id, a, b)
+            return "helper.greaterThanOrEquals({}, {}, {})".format(op, a, b)
         if isinstance(op, ast.Gt):
-            return greaterThan(id, a, b)
+            return "helper.greaterThan({}, {}, {})".format(op, a, b)

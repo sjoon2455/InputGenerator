@@ -3,11 +3,9 @@
 
 def func(a, b):
     if a >= 3:
-        a += 3
-        func(4, 2)
+        print("ccccc")
         if a <= 7:
-            b -= 3
-            func(4, 2)
+            print("bbbbb")
             if b != 0:
-                func(4, 2)                                                           
+                print("aaaaa")
     return False
