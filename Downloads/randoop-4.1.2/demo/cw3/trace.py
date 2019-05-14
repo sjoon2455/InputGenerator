@@ -1,15 +1,20 @@
 #trace.py
+import ast
+from traceHelper import *
 
-class Trace():
-    def equals(id, a, b):
-        return a==b
-    def notEquals(id, a, b):
-        return a!=b
-    def lessThanOrEquals(id, a, b):
-        return a <= b
-    def lessThan(id, a, b):
-        return a<b
-    def greaterThanOrEquals(id, a, b):
-        return b<=a
-    def greaterThan(id, a, b):
-        return b<a
+class Trace(Helper):
+    
+
+    def whichTracetoUse(self, op, a, b):
+        if isinstance(op, ast.Eq):
+            return equals(id, a, b)
+        if isinstance(op, ast.NotEq):
+            return notEquals(id, a, b)
+        if isinstance(op, ast.LtE):
+            return lessThanOrEquals(id, a, b)
+        if isinstance(op, ast.Lt):
+            return lessThan(id, a, b)
+        if isinstance(op, ast.GtE):
+            return greaterThanOrEquals(id, a, b)
+        if isinstance(op, ast.Gt):
+            return greaterThan(id, a, b)

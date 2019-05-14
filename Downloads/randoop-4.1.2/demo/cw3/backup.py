@@ -1,6 +1,7 @@
 import astor
 import ast
 from tree_walk import * 
+from trace import *
 
 def func(a, b):
     if a >= 3:
@@ -16,13 +17,6 @@ def func(a, b):
 
 
 _ast = astor.code_to_ast(func)
-'''
-for node in ast.walk(_ast):
-    #print(node)
-    if isinstance(node, ast.If):
-        print(node.test.left.id)
-        #node.test.left
-'''
 
 class ChangeIf(TreeWalk):
     def pre_body_name(self):
@@ -41,11 +35,13 @@ class ChangeIf(TreeWalk):
                 #message = ast.Str("Calling {}".format(self.__name))
                 #print_statement = ast.Expr(ast.Call(print_func, [message], []))
                 #print(self.__name)
-                print(i, body)
+                #print(i, body)
                 #body.insert(i, ast.Str("aaaaa"))
                 lhs = body[i].test.left.id
                 op = body[i].test.ops[0]
-                rhs = body[i].test.comparators
+                rhs = body[i].test.comparators[0]
+                whichTracetoUse(op)
+                #body[i].test.left.id = trace.
                 print(rhs)
                 #print(op[0])
                 #print(body[i].test.left)
@@ -57,12 +53,7 @@ class ChangeIf(TreeWalk):
     def pre_Call(self):
         self.__name = self.cur_node.func.id
         return True
-    
-'''
-    def pre_If(self):
-        self.__name = self.cur_node.test.left.id
-        return True
-'''
+
 
 walker = ChangeIf()
 walker.walk(_ast)   # modify the tree in place
